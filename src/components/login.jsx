@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import '../styles/index.css';
 import Encabezado from './encabezado';
+import Footer from './footer';
+
 
 
 function Login() {
@@ -24,7 +26,7 @@ function Login() {
   return (
     <div>
       <Encabezado/>
-      <h1>Login</h1>
+      <div id='formato1'>
       <form onSubmit={handleSubmit}>
         <label>
           Username:
@@ -38,6 +40,8 @@ function Login() {
         <br />
         <button type="submit">Login</button>
       </form>
+      </div>
+      < Footer/>
     </div>
   );
 }

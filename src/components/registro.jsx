@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import '../styles/registro.css';
 import Encabezado from './encabezado';
+import Footer from './footer';
 
 
 
@@ -99,6 +100,7 @@ function RegistroForm() {
             <br />
             <button type="submit">Registrarse</button>
         </form>
+        <Footer/>
     </div>
     );
 }
