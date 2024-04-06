@@ -17,7 +17,6 @@ const Encabezado = () => {
                 <li><Link className="menu-link" to="/login">Productos</Link></li>
                 <li><Link className="menu-link" to="/register">Servicios</Link></li>
                 <li><Link className="menu-link" to="/register">Sobre Nosotros</Link></li>
-                <li><Link className="menu-link" to="/register">Sigue tu pedido</Link></li>
             </ul>
         </nav>
     </div>
