@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
 import '../styles/index.css';
 import Encabezado from './encabezado';
 import Footer from './footer';
@@ -34,7 +35,7 @@ function Login() {
         throw new Error(errorData.message);
       }
 
-      const { token, id } = await response.json();
+      const { token, id, role } = await response.json();
       const userDataResponse = await fetch(`http://localhost:8080/api/v1/user/${id}`, {
         method: 'GET',
         headers: {
@@ -51,8 +52,12 @@ function Login() {
 
       localStorage.setItem('authToken', token);
       localStorage.setItem('userData', JSON.stringify(userData));
-
-      navigate('/dashboard');
+      localStorage.setItem('role', role);
+      if (role === 'ADMIN') {
+        navigate('/Admin');
+      } else if (role === 'USER') {
+        navigate('/dashboard');
+      }
     } catch (error) {
       console.error('Error:', error);
       setErrorMessage(error.message);
@@ -74,7 +79,7 @@ function Login() {
             <input type="password" value={password} onChange={handlePasswordChange} />
           </label>
           <br />
-          <button type="submit">Login</button>
+          <Button variant="contained" type="submit">Login</Button>
           {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         </form>
       </div>

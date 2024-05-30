@@ -1,4 +1,9 @@
 import React from 'react';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
 import { useState } from 'react';
 import '../styles/registro.css';
 import Encabezado from './encabezado';

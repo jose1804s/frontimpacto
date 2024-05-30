@@ -1,4 +1,8 @@
 import React from 'react';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 import '../styles/index.css';
 import { Link } from 'react-router-dom';
 
@@ -14,7 +18,7 @@ const Encabezado = () => {
         <nav className="menu">
             <ul className='menu-lista'>
                 <li><Link className="menu-link" to="/">Inicio</Link></li>
-                <li><Link className="menu-link" to="/login">Productos</Link></li>
+                <li><Link className="menu-link" to="/Productos">Productos</Link></li>
                 <li><Link className="menu-link" to="/register">Servicios</Link></li>
                 <li><Link className="menu-link" to="/register">Sobre Nosotros</Link></li>
             </ul>
@@ -22,4 +26,4 @@ const Encabezado = () => {
     </div>
     );
 };
-export default Encabezado;
+export default Encabezado; 
