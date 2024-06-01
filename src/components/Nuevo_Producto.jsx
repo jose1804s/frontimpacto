@@ -1,93 +1,95 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const ProductForm = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        description: '',
-        price: '',
-        image: null
-    });
+const ProductoForm = () => {
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [price, setPrice] = useState('');
+  const [image, setImage] = useState(null);
+  const [message, setMessage] = useState('');
 
-    const handleChange = (e) => {
-        const { name, value, files } = e.target;
-        setFormData({
-            ...formData,
-            [name]: files ? files[0] : value
-        });
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('description', description);
+    formData.append('price', price);
+    formData.append('image', image);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    // Obtén el token del almacenamiento local o del estado de la aplicación
+    const token = localStorage.getItem('authToken'); // Ajusta esto según tu lógica de autenticación
+    console.log('Token almacenado:', token);
+    try {
+      const response = await axios.post('http://localhost:8080/api/v1/productos/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${token}` // Incluye el token en los encabezados
+        },
+        withCredentials: true, // Para incluir cookies en la solicitud si es necesario
+      });
 
-        const data = new FormData();
-        data.append('name', formData.name);
-        data.append('description', formData.description);
-        data.append('price', formData.price);
-        if (formData.image) {
-            data.append('image', formData.image);
-        }
+      if (response.status === 200) {
+        setMessage('Producto subido exitosamente');
+      } else {
+        setMessage('Error al subir el producto');
+      }
+    } catch (error) {
+      setMessage('Error al subir el producto');
+      console.error('Error al subir el producto:', error);
+    }
+  };
 
-        try {
-            const response = await axios.post('/api/productos', data, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-            console.log('Producto guardado:', response.data);
-        } catch (error) {
-            console.error('Error al guardar el producto:', error);
-        }
-    };
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
+  };
 
-    return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="name">Nombre:</label>
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                />
-            </div>
-            <div>
-                <label htmlFor="description">Descripción:</label>
-                <input
-                    type="text"
-                    id="description"
-                    name="description"
-                    value={formData.description}
-                    onChange={handleChange}
-                    required
-                />
-            </div>
-            <div>
-                <label htmlFor="price">Precio:</label>
-                <input
-                    type="number"
-                    id="price"
-                    name="price"
-                    value={formData.price}
-                    onChange={handleChange}
-                    required
-                />
-            </div>
-            <div>
-                <label htmlFor="image">Imagen:</label>
-                <input
-                    type="file"
-                    id="image"
-                    name="image"
-                    accept="image/*"
-                    onChange={handleChange}
-                />
-            </div>
-            <button type="submit">Guardar Producto</button>
-        </form>
-    );
+  return (
+    <div>
+      <h1>Subir Producto</h1>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="name">Nombre:</label>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="description">Descripción:</label>
+          <textarea
+            id="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="price">Precio:</label>
+          <input
+            type="number"
+            id="price"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="image">Imagen:</label>
+          <input
+            type="file"
+            id="image"
+            onChange={handleImageChange}
+            required
+          />
+        </div>
+        <button type="submit">Subir Producto</button>
+      </form>
+      {message && <p>{message}</p>}
+    </div>
+  );
 };
 
-export default ProductForm;
+export default ProductoForm;

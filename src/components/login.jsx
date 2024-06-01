@@ -51,6 +51,7 @@ function Login() {
       const userData = await userDataResponse.json();
 
       localStorage.setItem('authToken', token);
+      console.log('Token almacenado:', token);
       localStorage.setItem('userData', JSON.stringify(userData));
       localStorage.setItem('role', role);
       if (role === 'ADMIN') {
