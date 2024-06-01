@@ -5,6 +5,7 @@ import Dashboard from './components/dashboard';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Productos from './components/Productos';
 import Administrador from './components/Admin';
+import ProductForm from './components/Nuevo_Producto';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/productos" element={<Productos />} />
                     <Route path="/Admin" element={<Administrador />} />
+                    <Route path="/NewProduct" element={<ProductForm />} />
                 </Routes>
 
             </BrowserRouter>

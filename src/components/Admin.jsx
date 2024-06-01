@@ -46,7 +46,7 @@ function Administrador() {
         <nav className="menu">
             <ul className='menu-lista'>
                 <li><Link className="menu-link" to="/">Pedidos</Link></li>
-                <li><Link className="menu-link" to="/Productos">Nuevo Producto</Link></li>
+                <li><Link className="menu-link" to="/NewProduct">Nuevo Producto</Link></li>
                 <li><Link className="menu-link" to="/register">Modificar Producto</Link></li>
             </ul>
         </nav>
