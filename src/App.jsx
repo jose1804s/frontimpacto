@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Productos from './components/Productos';
 import Administrador from './components/Admin';
 import ProductForm from './components/Nuevo_Producto';
+import ModificarProductoForm from './components/Modificar_producto';
 
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
                     <Route path="/productos" element={<Productos />} />
                     <Route path="/Admin" element={<Administrador />} />
                     <Route path="/NewProduct" element={<ProductForm />} />
+                    <Route path="/Modificar" element={<ModificarProductoForm />} />
+                    
                 </Routes>
 
             </BrowserRouter>

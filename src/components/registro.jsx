@@ -50,11 +50,11 @@ function RegistroForm() {
             });
 
             if (!response.ok) {
-                // Si la respuesta no es satisfactoria, lanza un error
+                // Si la respuesta no es satisfactoria
                 throw new Error('La solicitud falló');
             }
 
-            // Aquí puedes manejar la respuesta exitosa, por ejemplo, mostrar un mensaje de éxito
+            //mostrar un mensaje de éxito
             const responseData = await response.json();
             console.log('Respuesta del servidor:', responseData);
             alert('Registro completado con éxito');

@@ -45,9 +45,10 @@ function Administrador() {
         </header>
         <nav className="menu">
             <ul className='menu-lista'>
-                <li><Link className="menu-link" to="/">Pedidos</Link></li>
+                <li><Link className="menu-link" to="/Admin">Dashboard</Link></li>
+                <li><Link className="menu-link" to="/Admin">Pedidos</Link></li>
                 <li><Link className="menu-link" to="/NewProduct">Nuevo Producto</Link></li>
-                <li><Link className="menu-link" to="/register">Modificar Producto</Link></li>
+                <li><Link className="menu-link" to="/Modificar">Modificar Producto</Link></li>
             </ul>
         </nav>
         <h1>Bienvenido: Administrador Impacto Visual</h1>
