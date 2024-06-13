@@ -7,7 +7,7 @@ import '../styles/index.css';
 import { Link } from 'react-router-dom';
 
 
-const Encabezado = () => {
+const Encabezado2 = () => {
     return (
     <div>
         <header>
@@ -17,12 +17,11 @@ const Encabezado = () => {
         </header>
         <nav className="menu">
             <ul className='menu-lista'>
-                <li><Link className="menu-link" to="/">Inicio</Link></li>
-                <li><Link className="menu-link" to="/Productos">Productos</Link></li>
-                <li><Link className="menu-link" to="/Historia">Sobre Nosotros</Link></li>
+                <li><Link className="menu-link" to="/dashboard">Dashboard</Link></li>
+                <li><Link className="menu-link" to="/ProductosUser">Productos</Link></li>
             </ul>
         </nav>
     </div>
     );
 };
-export default Encabezado; 
+export default Encabezado2; 

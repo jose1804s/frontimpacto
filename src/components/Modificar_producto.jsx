@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Footer from './footer';
 
 function ModificarProductoForm() {
   const [productId, setProductId] = useState('');
@@ -58,7 +59,6 @@ function ModificarProductoForm() {
       <nav className="menu">
         <ul className='menu-lista'>
           <li><Link className="menu-link" to="/Admin">Dashboard</Link></li>
-          <li><Link className="menu-link" to="/Administrador">Pedidos</Link></li>
           <li><Link className="menu-link" to="/NewProduct">Nuevo Producto</Link></li>
           <li><Link className="menu-link" to="/Modificar">Modificar Producto</Link></li>
         </ul>
@@ -115,6 +115,7 @@ function ModificarProductoForm() {
         <button type="submit">Actualizar Producto</button>
       </form>
       {message && <p>{message}</p>}
+      <Footer />
     </div>
   );
 }

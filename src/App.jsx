@@ -7,6 +7,8 @@ import Productos from './components/Productos';
 import Administrador from './components/Admin';
 import ProductForm from './components/Nuevo_Producto';
 import ModificarProductoForm from './components/Modificar_producto';
+import SobreNosotros from './components/SobreNosotros';
+import Productos2 from './components/Productos2';
 
 
 function App() {
@@ -23,6 +25,10 @@ function App() {
                     <Route path="/Admin" element={<Administrador />} />
                     <Route path="/NewProduct" element={<ProductForm />} />
                     <Route path="/Modificar" element={<ModificarProductoForm />} />
+                    <Route path="/Historia" element={<SobreNosotros />} />
+                    <Route path="/ProductosUser" element={<Productos2 />} />
+                    
+
                     
                 </Routes>
 

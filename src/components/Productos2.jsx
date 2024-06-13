@@ -5,14 +5,16 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
-import Encabezado from './encabezado';
+import Encabezado2 from './encabezado2';
 import Footer from './footer';
 import '../styles/index.css';
 
-export default function Productos() {
+export default function Productos2() {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [carrito, setCarrito] = useState([]);
 
   useEffect(() => {
     const obtenerProductos = async () => {
@@ -34,13 +36,17 @@ export default function Productos() {
     obtenerProductos();
   }, []);
 
+  const agregarAlCarrito = (producto) => {
+    setCarrito([...carrito, producto]);
+  };
+
   if (loading) {
     return <CircularProgress />;
   }
 
   return (
     <>
-      <Encabezado />
+      <Encabezado2 />
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <Carousel
           showArrows={true}
@@ -49,7 +55,7 @@ export default function Productos() {
           centerMode={true}
           centerSlidePercentage={33.33}
           dynamicHeight={false}
-          showStatus={false} 
+          showStatus={false}
           showIndicators={false}
           renderArrowPrev={(onClickHandler, hasPrev, label) =>
             hasPrev && (
@@ -89,12 +95,21 @@ export default function Productos() {
                       {new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'COP' }).format(producto.price)}
                     </Typography>
                   </CardContent>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => agregarAlCarrito(producto)}
+                    style={{ alignSelf: 'center', marginBottom: '10px' }}
+                  >
+                    Agregar al carrito
+                  </Button>
                 </Card>
               </div>
             ))
           )}
         </Carousel>
         <Footer />
+
       </div>
     </>
   );

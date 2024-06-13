@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link} from 'react-router-dom'; 
 import '../styles/index.css';
+import Footer from './footer';
 
 
 
@@ -46,7 +47,6 @@ function Administrador() {
         <nav className="menu">
             <ul className='menu-lista'>
                 <li><Link className="menu-link" to="/Admin">Dashboard</Link></li>
-                <li><Link className="menu-link" to="/Admin">Pedidos</Link></li>
                 <li><Link className="menu-link" to="/NewProduct">Nuevo Producto</Link></li>
                 <li><Link className="menu-link" to="/Modificar">Modificar Producto</Link></li>
             </ul>
@@ -54,7 +54,9 @@ function Administrador() {
         <h1>Bienvenido: Administrador Impacto Visual</h1>
         {userData ? renderUserDataTable(userData) : <p>Cargando datos del usuario...</p>}
         <button onClick={logout} style={{marginTop: "20px"}}>Cerrar Sesión</button> 
+        <Footer />
       </div>
+      
       
     );
   }
